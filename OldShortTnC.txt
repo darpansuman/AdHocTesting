@@ -1,0 +1,615 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  /* -----------------------------------------
+     COMMON STYLES
+  -------------------------------------------- */
+  body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    line-height: normal;
+  }
+
+  a {
+    text-decoration: none;
+    color: #48114b;
+    word-break: break-all;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 15px;
+    font-weight: 400;
+  }
+
+  /* @page {
+    size: A4 portrait;
+	margin: 0mm;
+  } */
+
+  @media print {
+  /* 1. Reset body and html for the PDF engine */
+    html, body {
+        height: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }    
+    /* 2. Configure the wrapper as a Flex container */
+    .page-wrapper {
+        display: flex;
+        flex-direction: column;
+        height: 100vh; 
+        page-break-after: always;
+        overflow: hidden; /* Prevents tiny overflows from hiding the footer */
+    }    
+    /* 3. Force the content area to expand and push the footer down */
+    .page-content {
+        flex: 1 0 auto; 
+        padding: 12px 1.5rem;
+    }    
+    /* 4. Ensure the footer is at the absolute bottom */
+    .footer {
+        height: 12px;
+        background: #48114b !important;
+        width: 100%;
+        flex-shrink: 0; /* Prevents the footer from being compressed */
+        -webkit-print-color-adjust: exact; /* Required for Chrome/Safari to show colors */
+    }    
+    /* @page {
+        size: A4 portrait;
+        margin: 0;
+    } */
+  }
+
+  .d-flex {
+    display: flex;
+  }
+
+  .justify-content-center {
+    justify-content: center !important;
+  }
+
+  .justify-content-between {
+    justify-content: space-between !important;
+  }
+
+  .align-items-center {
+    align-items: center !important;
+  }
+
+  .text-grey {
+    color: #abadb1;
+  }
+
+  .ml-30 {
+    margin-left: 30px;
+  }
+
+  .mt-0 {
+    margin-top: 0px !important;
+  }
+
+  .mt-10 {
+    margin-top: 10px !important;
+  }
+
+  .mb-10{
+    margin-bottom: 10px !important;
+  }
+
+  .mb-0 {
+    margin-bottom: 0px !important;
+  }
+
+  .pl-0 {
+    padding-left: 0px;
+  }
+  .text-decoration-none {
+    list-style-type: none;
+  }
+
+  #pageThree, #pageSix{
+    padding-bottom: 5px;
+  }
+
+  #pageOne, #pageFive{
+    padding-bottom: 0px;
+  }
+  /* -----------------------------------------
+     MAIN CONTAINER
+  -------------------------------------------- */
+  .rental-app-container {
+    color: #444444;
+    line-height: 20px;
+    font-size: 13px;
+    width: 595px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+  }
+
+  .page-content {
+    flex: 1;
+    padding: 12px 1.5rem;
+  }
+  
+  .page-wrapper {
+	display: flex;
+    flex-direction: column;
+    /*height: 900px; /* A4 height at 96dpi */
+    min-height: 100vh;
+    page-break-after: always;
+  }
+
+
+  /* -----------------------------------------
+     HEADER
+  -------------------------------------------- */
+  .header {
+    height: 90px;
+    background-color: #13B5EA;
+    width: 100%;
+    position: relative;
+    border-bottom: 5px solid #058FBC;
+  }
+
+  .header-top {
+    z-index: 9;
+    padding: 0 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .logo {
+    height: 100%;
+    width: 10%;
+    max-width: 60px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    padding-left: 2px;
+  }
+
+
+  .header p {
+    font-size: 12px;
+    letter-spacing: 6px;
+    margin-top: 0;
+    color: #ffffff;
+  }
+
+  .header .title-wrapper {
+    text-align: center;
+    position: relative;
+    flex: 1;
+    padding: 0 8px;
+  }
+
+  .hiflex-logo {
+    object-fit: contain;
+    width: 25%;
+    max-width: 140px;
+    display: block;
+  }
+
+  /* -----------------------------------------
+     DETAILS CONTAINER
+  -------------------------------------------- */
+  .bg-secondary {
+    background: #f5f3ff;
+  }
+
+  .details-container {
+    padding: 12px 16px;
+    border-radius: 6px;
+    padding-right: 100px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+  }
+
+  .line {
+    height: 1.5px;
+    background: #48114b;
+    width: 43px;
+  }
+
+  .details-left-section {
+    font-size: 14px;
+    font-weight: 500;
+    color: #48114b;
+  }
+
+  .details-sec-title {
+    font-size: 11px;
+    color: #0f0e0e;
+    line-height: normal;
+    margin-bottom: 2px;
+  }
+
+  .details-sec-value {
+    font-size: 10px;
+    font-weight: 700;
+    color: #111111;
+    line-height: normal;
+  }
+
+  /* -----------------------------------------
+     CONTRACT BOX
+  -------------------------------------------- */
+  .contract-box {
+    background: #fff;
+    padding: 20px 16px;
+    border: 1px solid #d3d3d3;
+    border-radius: 6px;
+    max-width: 100%;
+    margin: auto;
+  }
+
+  .contract-title {
+    font-size: 12px;
+    margin: 0;
+    font-weight: 600;
+    color: #000000;
+  }
+
+  .contract-box-details {
+    font-size: 11px;
+    color: #0f172a;
+  }
+
+  .contract-box-title {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .contract-box-value {
+    font-weight: 600;
+  }
+
+  .details-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .details-row div {
+    flex: 1 1 25%;
+    margin-bottom: 2px;
+  }
+
+  .contract-box .details-row:last-of-type {
+    margin-bottom: 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 12px 0;
+  }
+
+  /* -----------------------------------------
+     CUSTOM CHECKBOX
+  -------------------------------------------- */
+  .custom-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 10px;
+    position: relative;
+    padding-left: 16px;
+    line-height: normal;
+    height: 15px;
+  }
+
+  .custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
+
+  .custom-checkbox .checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 12px;
+    width: 12px;
+    background-color: #48114b;
+    border-radius: 2px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .custom-checkbox input:checked ~ .checkmark::after {
+    display: block;
+    left: 4.5px;
+    top: 3px;
+    width: 2px;
+    height: 4px;
+    border: solid white;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(45deg);
+  }
+
+  .custom-checkbox:hover .checkmark {
+    opacity: 0.9;
+  }
+
+  /* -----------------------------------------
+     TERMS & CONDITIONS SECTION
+  -------------------------------------------- */
+  .container {
+    margin: auto;
+    margin-top: 12px;
+  }
+
+  .terms-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 12px;
+    color: #000000;
+    margin-top: 20px;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 10px;
+    margin-bottom: 5px;
+    line-height: normal;
+    color: #000000;
+  }
+
+  .terms-box {
+    border: 1px solid #d3d3d3;
+    padding: 16px 13px;
+    border-radius: 6px;
+    background-color: #fefefe;
+    font-size: 10px;
+  }
+
+  .clause {
+    margin-bottom: 20px;
+    line-height: normal;
+  }
+
+  .clause:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .clause-title {
+    font-weight: bold;
+    color: #0c0c0c;
+  }
+
+  .clause-text {
+    margin-top: 2px;
+    font-weight: 400;
+  }
+
+  /* -----------------------------------------
+     TERMS CONDITION LIST
+  -------------------------------------------- */
+  .section-title {
+    font-weight: bold;
+    font-size: 10px;
+    color: #000000;
+    line-height: 16px;
+    margin-top: 10px;
+  }
+
+  .section-text {
+    font-size: 10px;
+    color: #0c0c0c;
+    line-height: 15px;
+  }
+
+  .terms-condition-list {
+    margin-top: 10px;
+  }
+
+  .definition-list {
+    padding-left: 0;
+    margin-top: 0;
+    list-style-type: none;
+  }
+
+  .definition-list li {
+    font-size: 10px;
+    line-height: 15px;
+    color: #0f0f0f;
+    font-weight: 400;
+  }
+
+  /* Target the inner bullet list */
+  .definition-list ul {
+    list-style-type: disc; /* Ensures a dark, solid bullet */
+    padding-left: 20px;    /* Total indentation from the parent text */
+  }
+  
+  .definition-list ul li {
+    padding-left: 0;
+    list-style-position: outside;
+  }
+  
+  /* Ensure the bullet is dark even if parent text is grey */
+  .definition-list ul li::marker {
+    color: #000000;
+  }
+
+  /* -----------------------------------------
+     FOOTER BAR
+  -------------------------------------------- */
+  .footer {
+	height: 12px;
+    background: #48114b;
+    width: 100%;
+  }
+
+</style>
+<div class="rental-app-container">
+  <!--mainContent-->
+  <div class="mainContent">
+  <div class="page-wrapper">
+    <!-- Page One Content Start -->
+    <div class="page-content" id="pageOne">
+      <!--header-->
+      <div class="header">
+        <div class="header-top">
+          <img src="{{ 'logo.png' | asset_local }}" alt="Logo" class="logo"/>
+            <a href="javascript:void(0)" class="title-wrapper">
+              <h6 class="title">DEVICE RENTAL</h6>
+              <p>AGREEMENT PDF</p>
+            </a>
+              <img src="{{ 'hiFlex.png' | asset_local }}" alt="hiFlex Logo" class="hiflex-logo"/>
+          </div>
+      </div>
+
+      <!--End header-->
+      <div
+        class="details-container bg-secondary d-flex justify-content-between align-items-center"
+      >
+        <div class="details-left-section">
+          DETAILS
+          <div class="line"></div>
+        </div>
+        <div class="details-sec">
+          <div class="details-sec-title">CUSTOMER SA ID</div>
+          <div class="details-sec-value">{{ TemplateRequestContext.RentalContract.CustomerSouthAfricanId }}</div>
+        </div>
+        <div class="details-sec">
+          <div class="details-sec-title">Date</div>
+          <div class="details-sec-value">{{ TemplateRequestContext.RentalContract.ContractDateString }}</div>
+        </div>
+      </div>
+      <div class="contract-box">
+        <h2 class="contract-title">Agreement Details</h2>
+
+		<div class="details-row">
+          <div class="contract-box-details">
+            <div class="contract-box-title">First name</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.CustomerFirstName }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Last name</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.CustomerLastName }}</div>
+          </div>
+          <div class="contract-box-details"></div>
+        </div>
+        <hr />
+        <div class="details-row">
+          <div class="contract-box-details">
+            <div class="contract-box-title">Agreement ID</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.ContractId }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Agreement status</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.ContractStatus }}</div>
+          </div>
+          <div class="contract-box-details">
+			<div class="contract-box-title">Device Rental ID</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.DeviceRentalId }}</div>
+          </div>
+          <div class="contract-box-details"></div>
+        </div>
+        <hr />
+        <div class="details-row">
+          <div class="contract-box-details">
+            <div class="contract-box-title">Initial payment</div>
+            <div class="contract-box-value">R {{ TemplateRequestContext.RentalContract.TotalAmount }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Monthly installment</div>
+            <div class="contract-box-value">R {{ TemplateRequestContext.RentalContract.MonthlyInstallment }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Rental Term</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.TenureMonths }} months</div>
+          </div>
+          <div class="contract-box-details"></div>
+        </div>
+
+        <hr />
+
+        <h2 class="contract-title">Device details</h2>
+
+        <div class="details-row">
+          <div class="contract-box-details">
+            <div class="contract-box-title">Brand</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.DeviceMake }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Model</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.DeviceModel }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">Colour</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.DeviceColor }}</div>
+          </div>
+		  <div class="contract-box-details">
+            <div class="contract-box-title">Memory</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.DeviceMemory }}</div>
+          </div>
+          <div class="contract-box-details"></div>
+        </div>
+        <hr />
+        <div class="details-row">
+          <div class="contract-box-details">
+            <div class="contract-box-title">TFG SIM number</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.TfgSimNumber }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">TFG Mobile number</div>
+            <div class="contract-box-value">
+              {{ TemplateRequestContext.RentalContract.TfgMobileNumber }}
+            </div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">IMEI 1</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.Imei1 }}</div>
+          </div>
+          <div class="contract-box-details">
+            <div class="contract-box-title">IMEI 2</div>
+            <div class="contract-box-value">{{ TemplateRequestContext.RentalContract.Imei2 }}</div>
+          </div>
+        </div>
+        <hr />
+        <label class="custom-checkbox ml-10">
+          <input type="checkbox" checked />
+          <span class="checkmark"></span>
+          <span class="custom-checkbox-label">
+            {{ TemplateRequestContext.RentalContract.CustomerFirstName }} {{ TemplateRequestContext.RentalContract.CustomerLastName }} has accepted all terms and conditions mentioned in the
+            document.
+          </span>
+        </label>
+      </div>
+	  <div class="footer"></div>
+    </div>
+    <!-- Page One Content End -->
+	</div>
+	</div>
+  <!--End mainContent-->
+</div>
+</div>
